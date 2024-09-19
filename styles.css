@@ -1,0 +1,395 @@
+@import url("https://fonts.googleapis.com/css?family=Coda+Caption:800");
+
+html {
+    height: 100%;
+    width: 100%;
+    scroll-behavior: smooth !important; /* Smooth scrolling for all browsers */
+}
+
+body {
+    margin: 0;
+}
+
+.title {
+    text-align: center;
+    font-family: "Coda Caption", sans-serif;
+    font-weight: 800;
+    font-size: 100px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    transform: perspective(300px) scaleY(1.5) rotateX(-40deg);
+    transform-style: preserve-3d; /* Important for establishing a shared 3D space for all the layers */
+    text-shadow: 0.02em 0 red, 0.02em 0.02em yellow, 0 0.02em green, -0.02em 0.02em blue,
+        -0.02em 0 black, -0.02em -0.02em black, 0 -0.02em black, 0.02em -0.02em black;
+}
+
+.space-font {
+    font-family: "Jersey 10", sans-serif;
+}
+
+/* ----------- Hero section ----------- */
+/* Avatar */
+.avatar-container {
+    position: relative;
+    margin-right: 20px; /* Space between avatar and name */
+    z-index: 100;
+    flex-direction: row;
+    align-self: center;
+    margin-bottom: 2rem;
+}
+
+.avatar {
+    width: 75px; /* Set the size of the avatar */
+    height: 75px;
+    border-radius: 50%; /* Makes the avatar circular */
+    object-fit: cover; /* Ensures the image covers the circle */
+    transition: transform 0.5s ease; /* Smooth transition for the transform property */
+}
+
+.avatar:hover {
+    animation: spin 1s linear infinite; /* Apply the spin animation on hover */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg); /* Start from 0 degrees */
+    }
+    100% {
+        transform: rotate(360deg); /* End at 360 degrees */
+    }
+}
+
+/* Links */
+#links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 3rem;
+}
+
+#links a {
+    margin: 0 2rem;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 1s;
+    padding: 0px 1.5rem;
+    border: 2px dashed white;
+}
+
+@keyframes jump {
+    from,
+    20%,
+    53%,
+    80%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform: translate3d(0, 0, 0);
+    }
+
+    40%,
+    43% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(0, -15px, 0);
+    }
+
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(0, -5px, 0);
+    }
+
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+.jump {
+    animation: jump 1s infinite;
+    transform-origin: center bottom;
+}
+
+@keyframes flip {
+    from {
+        transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+        animation-timing-function: ease-out;
+    }
+
+    40% {
+        transform: perspective(700px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+        animation-timing-function: ease-out;
+    }
+
+    50% {
+        transform: perspective(700px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+        animation-timing-function: ease-in;
+    }
+
+    80% {
+        transform: perspective(400px) scale3d(0.95, 0.95, 0.95);
+        animation-timing-function: ease-in;
+    }
+
+    to {
+        transform: perspective(400px);
+        animation-timing-function: ease-in;
+    }
+}
+
+.flip:hover {
+    backface-visibility: visible;
+    animation: flip 7s infinite;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#text1 {
+    font-family: "Jersey 10", sans-serif;
+    font-size: 2rem;
+    margin-top: 3rem;
+    padding: 2rem;
+    color: black;
+    font-weight: bold;
+    max-width: 500px;
+}
+
+.scroller {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+section {
+    scroll-snap-align: start !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    height: 100vh;
+}
+
+#header-section {
+    background: url("./images/sky.jpg");
+    text-align: center;
+}
+
+/* ----------- City section ----------- */
+#city-section {
+    scroll-snap-align: start;
+    background: url("./images/city.jpg");
+    opacity: 0.9;
+    text-align: center;
+}
+
+#city-section .title {
+    padding-top: 5rem;
+}
+
+#text-container {
+    position: relative;
+    width: 80%;
+    height: 80%;
+}
+
+.text {
+    position: absolute;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 24px;
+    font-weight: bolder;
+    background-color: aliceblue;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 350px;
+    padding: 10px;
+}
+
+/* ----------- Nature section ----------- */
+
+#nature-section {
+    position: relative;
+    overflow: hidden;
+    border: 30px salmon solid;
+    height: 95%;
+}
+
+#nature-section .title {
+    padding-top: 5rem;
+}
+
+#column-1 {
+    padding: 0rem 2rem;
+}
+
+.toggle-button {
+    padding: 10px 20px;
+    background-color: #ffcc00;
+    color: #000; /* Black text */
+    border: 2px solid #333; /* Dark border */
+    font-family: "Press Start 2P", cursive; /* Retro pixelated font */
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 2px 2px 0 #999, 4px 4px 0 #333; /* Beveled look with double shadows */
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+#text2 {
+    width: 500px;
+    font-size: 1.25rem;
+}
+
+#text2 i {
+    color: green;
+    font-size: 32px;
+}
+
+#text2 strong {
+    color: orange;
+    font-size: 32px;
+}
+
+.split-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 100%;
+}
+
+.video-container {
+    position: relative;
+    margin: 0 auto;
+    width: 50%;
+    height: 60%;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none; /* Remove the default iframe border */
+    border-radius: 10px; /* Apply the same border-radius to iframe */
+}
+
+.birds {
+    width: 100px;
+    height: 100px;
+}
+
+#bird-container {
+    z-index: -5;
+    position: absolute;
+    top: 15%; /* Start the bird at the middle of the screen */
+    left: -100px; /* Start the bird off the screen to the left */
+    transform: translateY(-50%);
+    animation: flyAcross 5s linear infinite, flyUpDown 3s ease-in-out infinite;
+}
+
+#bird-container-2 {
+    z-index: -5;
+    position: absolute;
+    top: 27%; /* Start the bird at the middle of the screen */
+    left: -100px; /* Start the bird off the screen to the left */
+    transform: translateY(-50%);
+    animation: flyAcross 7s linear infinite, flyUpDown 2s ease-in-out infinite;
+}
+
+#cloud-container {
+    z-index: 2;
+    position: absolute;
+    top: 10%; /* Start the bird at the middle of the screen */
+    left: -100px; /* Start the bird off the screen to the left */
+    transform: translateY(-50%);
+    animation: flyAcross 10s linear infinite, flyUpDown 5s ease-in-out infinite;
+}
+
+#cloud-container img {
+    width: 100px;
+}
+
+@keyframes flyAcross {
+    0% {
+        left: -100px; /* Start off the left side of the screen */
+    }
+    100% {
+        left: 100vw; /* Move to the right side of the screen */
+    }
+}
+
+@keyframes flyUpDown {
+    0% {
+        transform: translateY(-50%) translateY(0);
+    }
+    25% {
+        transform: translateY(-50%) translateY(-30px); /* Move up */
+    }
+    50% {
+        transform: translateY(-50%) translateY(0); /* Return to original position */
+    }
+    75% {
+        transform: translateY(-50%) translateY(30px); /* Move down */
+    }
+    100% {
+        transform: translateY(-50%) translateY(0); /* Return to original position */
+    }
+}
+
+.flower-container {
+    width: 100%;
+    height: 75px;
+    background-image: url("images/flower.gif");
+    background-repeat: repeat-x;
+    background-position: center; /* Optional: Center vertically */
+    background-size: 50px 50px; /* Ensures the image is not stretched */
+}
+
+/* ----------- Space section ----------- */
+
+#space-section {
+    background: url("./images/space.jpg");
+    text-align: center;
+}
+
+#space-section .title {
+    padding-top: 5rem;
+    width: 50%;
+}
+
+#spotlight {
+    position: relative;
+    opacity: 1;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+#text3 {
+    font-family: "Press Start 2P", cursive;
+    z-index: 20;
+    font-size: 1.5rem;
+    color: rgb(206, 201, 201);
+    font-weight: bold;
+    padding: 2rem;
+    max-width: 520px;
+    text-align: right;
+    position: absolute;
+    right: 30px;
+}
+
+#text3 a {
+    font-family: "Jersey 10", sans-serif;
+    font-size: 3rem;
+}
